@@ -1,6 +1,0 @@
-Past commit
-<<<<<<< HEAD
-Future commit
-=======
-testing commit in new branch new test text
->>>>>>> New_Test_Text
