@@ -26,6 +26,12 @@
     height:100%;
     object-fit: contain;
 }
+ .sidenavbar{
+    border-radius: 5px;
+}
+.sidenavbardelivery{
+    border-radius: 5px;
+}
 
 
 

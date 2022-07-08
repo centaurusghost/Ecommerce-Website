@@ -84,7 +84,7 @@
     <div class="bg-light">
       <h3 class="text-center">Ozone & Bishal</h3>
       <p class="text-center">
-       They shall do it alone. We shall do it together.
+        They shall do it alone. We shall do it together.
       </p>
     </div>
 
@@ -180,18 +180,48 @@
 
       </div>
 
-      <div class="col-md-2 bg-warning">
+      <div class="col-md-2 bg-dark p-1 sidenavbar">
         <!-- display side navigation bar -->
-        <h1>Hi</h1>
+        <ul class="navbar-nav me-auto text-center">
+          <li class="nav-item bg-warning sidenavbardelivery">
+            <a href="#" class="nav-link text-dark">
+              <h4> Delivery Brands</h4>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link text-light">
+              Brand 1
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link text-light">
+              Brand 2
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link text-light">
+          Brand3
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link text-light">
+              Brand4
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
 
 
     <!-- last child -->
-    <div class="bg-warning p-3 text-center">
-    <p>Ozone & Bishal. Feel Free To Contact Us</p>
-</div>
+    <div class="bg-warning p-3 text-center text-light">
+      <p>Ozone & Bishal. Feel Free To Contact Us</p>
+    </div>
   </div>
   <?php
 
