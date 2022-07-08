@@ -7,3 +7,7 @@ alter table user add unique(user_email);
 alter table user add unique(user_bank_account_number);
 alter table user add unique(user_phone_number);
 
+
+insert into `users` (user_fullname, user_username, user_email, user_phone_number, user_password, user_bank_name, user_bank_branch_name, user_bank_account_number, user_gender)
+            VALUES("Ozone Wagle","centaur", "ozonewagle998@gmail.com",9846317003,"1234512345","Machbank","Lamachaur","1233322222222222","Male")";
+

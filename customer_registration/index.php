@@ -26,7 +26,7 @@ include('../includes/connect.php');
           </div>
           <div class="input-box">
             <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" maxlength="25" required>
+            <input type="text" placeholder="Enter your username" name="user_username" maxlength="25" required>
           </div>
           <div class="input-box">
             <span class="details">Email(Optional)</span>
@@ -34,7 +34,7 @@ include('../includes/connect.php');
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input placeholder="Enter your number" name="user_phone_number" maxlength="10" type="number" required>
+            <input placeholder="Enter your number" name="user_phone_number" maxlength="10" type="text" pattern="\d*" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
@@ -55,26 +55,26 @@ include('../includes/connect.php');
           </div>
           <div class="input-box">
             <span class="details">Account Number</span>
-            <input  placeholder="Enter bank account" name="user_bank_account_number" type="number" minlength="16" maxlength="16"  required>
+            <input placeholder="Enter bank account" name="user_bank_account_number" type="text" pattern="\d*" minlength="16" maxlength="16" required>
           </div>
         </div>
         <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
+          <input type="radio" name="gender" id="dot-1" checked value="male">
+          <input type="radio" name="gender" id="dot-2" value="female">
+          <input type="radio" name="gender" id="dot-3" value="others">
           <span class="gender-title">Gender</span>
           <div class="category">
             <label for="dot-1">
               <span class="dot one"></span>
-              <span class="gender" name="male">Male</span>
+              <span class="gender">Male</span>
             </label>
             <label for="dot-2">
               <span class="dot two"></span>
-              <span class="gender" name="female">Female</span>
+              <span class="gender">Female</span>
             </label>
             <label for="dot-3">
               <span class="dot three"></span>
-              <span class="gender" name="others">Others</span>
+              <span class="gender">Others</span>
             </label>
           </div>
         </div>
@@ -86,68 +86,54 @@ include('../includes/connect.php');
   </div>
 
   <?php
- // checks if botton is pressed or not
+  // checks if botton is pressed or not
   if (isset($_POST['user_registration_botton'])) {
     $user_fullname = $_POST['user_fullname'];
-    $user_email=$_POST['user_email'];
-    $user_phone_number=(int)$_POST['user_phone_number'];
+    $user_username = $_POST['user_username'];
+    $user_email = $_POST['user_email'];
+    $user_phone_number = (int)$_POST['user_phone_number'];
     $user_password = $_POST['user_password'];
     $user_confirm_password = $_POST['user_confirm_password'];
-    $user_bank_name=$_POST['user_bank_name'];
-    $user_bank_branch_name=$_POST['user_bank_branch_name'];
-    $user_bank_account_number=(int)$_POST['user_bank_account_number'];
-     //check which gender is selected
-     if(isset($_POST['dot-1'])){
-      $user_gender="male";
+    $user_bank_name = $_POST['user_bank_name'];
+    $user_bank_branch_name = $_POST['user_bank_branch_name'];
+    $user_bank_account_number = (int)$_POST['user_bank_account_number'];
+    //check which gender is selected
+    if (isset($_POST['gender'])) {
+      $user_gender = $_POST['gender'];
     }
-    if(isset($_POST['dot-2'])){
-      $user_gender="female";
-    }
-    if(isset($_POST['dot-3'])){
-      $user_gender="other";
-    }
-    $insert_query="insert into `users` (user_fullname, user_email, user_phone_number, user_password, user_bank_name, user_bank_branch_name, user_bank_account_number, user_gender)  
-    VALUES('$user_fullname','$user_email','$user_phone_number','$user_password','$user_bank_name','$user_bank_branch_name','$user_bank_account_number')";
-   // $user_gender=$_POST['user_gender'];
+    $insert_query = "insert into users(user_fullname, user_username, user_email, user_phone_number, user_password, user_bank_name, user_bank_branch_name, user_bank_account_number, user_gender) VALUES('$user_fullname','$user_username', '$user_email','$user_phone_number',$user_password,'$user_bank_name','$user_bank_branch_name','$user_bank_account_number','$user_gender');";
+    // $user_gender=$_POST['user_gender'];
     //$user_email=$_POST[''];
     //now time to check if password matches or not
     //$insert_query_temp="insert into `email`(email_name) values('$user_email')";
     if (isset($_POST['user_password']) & $user_password == $user_confirm_password) {
-     // echo "<script>alert('Passwords Matched')</script>";
-     $result = mysqli_query($con, $insert_query);
-     if ($result) {
-         echo "<script>alert('Data added sucessfully')</script>";
-     }
-     else{
-         echo "<script>alert('1 or more errors Cannot add duplicate items')</script>";
-     }
-  
+      // echo "<script>alert('Passwords Matched')</script>";
+
+      $result = mysqli_query($con, $insert_query);
+      if ($result) {
+        echo "<script>alert('Data added sucessfully')</script>";
+      } else {
+        die(mysqli_error($con));
+        echo "<script>alert('1 or more errors Cannot add duplicate items')</script>";
+      }
     } else {
       echo "<script>alert('Passwords Do Not Match')</script>";
     }
   }
   ?>
-  <div>
+  <!-- <div>
     <?php
-    $user_gender=".";
-if (isset($_POST['user_registration_botton'])) {
-  
-  if(isset($_POST['male'])){
-    $user_gender="male";
-    echo "The botton is working";
-  } 
-  if(isset($_POST['female'])){
-    $user_gender="female";
-    echo "The botton is working";
-  }
-  if(isset($_POST['other'])){
-    $user_gender="other";
-    echo "The botton is working";
-  }
-  echo $user_gender;
-}
+    if (isset($_POST['user_registration_botton'])) {
+      // echo "The botton is working";
+
+      if (isset($_POST['gender'])) {
+        $user_gender = $_POST['gender'];
+        echo "The botton is working";
+        echo $user_gender;
+      }
+    }
     ?>
-  </div>
+  </div> -->
 
 </body>
 
