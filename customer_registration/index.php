@@ -92,16 +92,19 @@ include('../includes/connect.php');
     $user_username = $_POST['user_username'];
     $user_email = $_POST['user_email'];
     $user_phone_number = (int)$_POST['user_phone_number'];
+
     $user_password = $_POST['user_password'];
     $user_confirm_password = $_POST['user_confirm_password'];
+
     $user_bank_name = $_POST['user_bank_name'];
     $user_bank_branch_name = $_POST['user_bank_branch_name'];
+
     $user_bank_account_number = (int)$_POST['user_bank_account_number'];
     //check which gender is selected
     if (isset($_POST['gender'])) {
       $user_gender = $_POST['gender'];
     }
-    $insert_query = "insert into users(user_fullname, user_username, user_email, user_phone_number, user_password, user_bank_name, user_bank_branch_name, user_bank_account_number, user_gender) VALUES('$user_fullname','$user_username', '$user_email','$user_phone_number',$user_password,'$user_bank_name','$user_bank_branch_name','$user_bank_account_number','$user_gender');";
+    $insert_query = "insert into users(user_fullname, user_username, user_email, user_phone_number, user_password, user_bank_name, user_bank_branch_name, user_bank_account_number, user_gender) VALUES('$user_fullname','$user_username', '$user_email','$user_phone_number','$user_password','$user_bank_name','$user_bank_branch_name','$user_bank_account_number','$user_gender');";
     // $user_gender=$_POST['user_gender'];
     //$user_email=$_POST[''];
     //now time to check if password matches or not
@@ -114,7 +117,7 @@ include('../includes/connect.php');
         echo "<script>alert('Data added sucessfully')</script>";
       } else {
         die(mysqli_error($con));
-        echo "<script>alert('1 or more errors Cannot add duplicate items')</script>";
+        echo "<script>alert(mysqli_error($con))</script>";
       }
     } else {
       echo "<script>alert('Passwords Do Not Match')</script>";
