@@ -22,8 +22,8 @@
             <input type="text" placeholder="Enter your username" required>
           </div>
           <div class="input-box">
-            <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <span class="details">Email(Optional)</span>
+            <input type="text" placeholder="Enter your email" >
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
@@ -33,9 +33,22 @@
             <span class="details">Password</span>
             <input type="text" placeholder="Enter your password" required>
           </div>
+          
           <div class="input-box">
             <span class="details">Confirm Password</span>
             <input type="text" placeholder="Confirm your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Bank Name</span>
+            <input type="text" placeholder="Enter Bank name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Branch Name</span>
+            <input type="text" placeholder="Enter Branch name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Account Number</span>
+            <input type="text" placeholder="Enter bank account" required>
           </div>
         </div>
         <div class="gender-details">

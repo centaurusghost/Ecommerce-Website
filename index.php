@@ -42,7 +42,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Resister</a>
+              <a class="nav-link" href="./customer_registration/index.php">Register</a>
             </li>
 
             <li class="nav-item">
@@ -135,7 +135,6 @@
 
 
           <div class="col-md-4 mb-2">
-
             <div class="card">
               <img class="card-img-top" src="./images/4.jpg" alt="Card image cap">
               <div class="card-body">
@@ -208,8 +207,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-              Brand4
+            <a href="testCode.php" class="nav-link text-light">
+              Test Insert Page
             </a>
           </li>
         </ul>
