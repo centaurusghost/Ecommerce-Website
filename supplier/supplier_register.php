@@ -19,28 +19,34 @@
 </head>
 
 <body>
-    <div class="container vw-50
-    ">
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-5 mx-auto p-4">
 
-        <div class=" container row justify-content-md-center mb-4  bg-primary">
+                <div class="bg-dark rounded">
+                    <div class=" mb-3">
+                        <div class="col-md-12 text-center">
+                            <h1 class="text-light p-2 ">Register Store</h1>
+                        </div>
+                    </div>
+                    <form class="p-2">
+                        <div class="form-group mt-4">
+                            <input type="text" class="form-control" placeholder="Store Name">
+                        </div>
+                        <div class="form-group mt-4">
+                            <input type="text" id="password" class="form-control" placeholder="Store Location">
+                        </div>
 
-            <form class="mb-5 d-flex flex-column justify-content-center" style="max-width:450px">
+                        <div class="col-md-12 text-center mt-4">
+                            <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Register</button>
+                        </div>
 
-
-                <div class="form-outline mt-4">
-                    <input type="text" id="form5Example1" class="form-control" placeholder="Store Name" maxlength="50" />
+                    </form>
                 </div>
-                <div class="form-group mt-4">
-                    <input type="text" id="form5Example1" class="form-control" placeholder="Store Location" />
-                </div>
-                <div class="button mt-4 mb-5">
-                    <button class="btn px-2 py-1 bg-success text-light text-xl">Register</button>
-                </div>
 
-            </form>
+            </div>
         </div>
     </div>
-
 </body>
 
 </html>
