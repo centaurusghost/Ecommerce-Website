@@ -37,13 +37,13 @@
                 </div>
 
                 <div class="form-outline mt-4">
-                    <input type="text" id="form5Example1" class="form-control" placeholder="Product Name" />
+                    <input type="text" id="form5Example1" class="form-control" placeholder="Product Name" maxlength="50" />
                 </div>
                 <div class="form-group mt-4">
-                    <textarea rows="5" class="form-control" name="description" placeholder="Describe about product"></textarea>
+                    <textarea rows="5" class="form-control" name="description" placeholder="Describe about product" maxlength="300"></textarea>
                 </div>
                 <div class="form-outline mt-4">
-                    <input type="number" id="" class="form-control" placeholder="Product Price" />
+                    <input type="text" id="" class="form-control" placeholder="Product Price" pattern="\d*" maxlength="7" />
                 </div>
                 <div class="form-outline mt-4">
                     <input type="text" id="" class="form-control" placeholder="Product Category" />

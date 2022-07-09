@@ -73,7 +73,7 @@
           <a class="nav-link" href="#">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./supplier/create_product.php">become supplier</a>
+          <a class="nav-link" href="./supplier/supplier_register.php">become supplier</a>
         </li>
 
       </ul>
