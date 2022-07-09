@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <!-- Designined by CodingLab - youtube.com/codinglabyt -->
-<?php
-// include('../includes/connect.php');
-include('../includes/connect.php');
-?>
+
 
 <html lang="en" dir="ltr">
 

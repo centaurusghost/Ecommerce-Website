@@ -50,7 +50,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Total Price:100</a>
+              <!-- <a class="nav-link" href="#">Total Price:100</a> -->
             </li>
 
           </ul>
@@ -71,6 +71,9 @@
 
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./supplier/create_product.php">become supplier</a>
         </li>
 
       </ul>
@@ -198,7 +201,7 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link text-light">
-          Brand3
+              Brand3
             </a>
           </li>
 
