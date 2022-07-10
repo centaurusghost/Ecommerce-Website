@@ -1,30 +1,57 @@
-<!-- <?php
+<?php
 include('./includes/connect.php');
-?> -->
+?>
+
 
 <form name="form" action="" method="POST">
-    <span class="details">Enter Something<span class="optional_email"></span></span>
-    <input type="text" placeholder="Enter your email" name="email_id">
-    <br><br>
-    <input type="submit" value="Insert" name="botton_pressed">
+    <label for="membership" class="category">Choose a category:</label>
+    <select name="membership" id="membership">
+
+
+
+    <?php
+$category_array;
+
+$get_category_list_query = "select * from `category`";
+$get_sub_category_list_query = "select * from subcategory";
+
+$result = mysqli_query($con, $get_category_list_query);
+$insert_category = "insert into category(category_name), values()";
+// if($result){
+// echo  $result;
+// }
+while ($row = mysqli_fetch_assoc($result)) {
+    $category_name=$row['category_name'];
+   echo "<option value=''>$category_name</option>";
+}
+?>
+    
+        <!-- <option value="bronze">Bronze</option>
+        <option value="silver" selected>Silver</option>
+        <option value="Gold">Gold</option> -->
+    </select>
 </form>
 <div>
 
+    <form action="" method="POST">
+        <input type="submit" name="botton_pressed" value="Submit" />
+    </form>
+
     <?php
-    // if (isset($_POST['botton_pressed'])) {
-    //     if (isset($_POST['email_id'])) {
-    //         $email = $_POST['email_id'];
-    //         $insert_query = "insert into `email` (email_name) values('$email')";
-    //         $result = mysqli_query($con, $insert_query);
-    //         if ($result) {
-    //             echo "<script>alert('Email added sucessfully')</script>";
-    //         }
-    //         else{
-    //             echo "<script>alert('Cannot add duplicate items')</script>";
-    //         }
-    //         echo 'The email you entered is ' . $email;
-    //     }
-    // }
+    if (isset($_POST['botton_pressed'])) {
+        header('Location:index.php');
+        // if (isset($_POST['email_id'])) {
+        //     $email = $_POST['email_id'];
+        //     $insert_query = "insert into `email` (email_name) values('$email')";
+        //     $result = mysqli_query($con, $insegit rt_query);
+        //     if ($result) {
+        //         echo "<script>alert('Email added sucessfully')</script>";
+        //     } else {
+        //         echo "<script>alert('$email')</script>";
+        //     }
+        //     echo 'The category you entered is ' . $email;
+        // }
+    }
 
     ?>
 </div>

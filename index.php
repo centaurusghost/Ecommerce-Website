@@ -1,3 +1,7 @@
+<?php
+include('./includes/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- Bootstrap CSS -->
@@ -31,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Products</a>
@@ -50,13 +54,13 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Total Price:100</a>
+              <!-- <a class="nav-link" href="#">Total Price:100</a> -->
             </li>
 
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+          <form class="d-flex" role="search" method="POST">
+            <input class="form-control me-2" type="search" name="search_text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" name="search_botton" type="submit">Search</button>
           </form>
         </div>
       </div>
@@ -66,11 +70,25 @@
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Welcome Guest</a>
+          <a class="nav-link" href="#">
+<?php
+$user_logged_in_status=false;
+if(!$user_logged_in_status){
+echo "Weclome fack";
+}
+else{
+echo "welcome fucker";
+}
+?>
+
+          </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./supplier/supplier_register.php">become supplier</a>
         </li>
 
       </ul>
@@ -78,7 +96,7 @@
 
     <!-- third child -->
     <div class="bg-light">
-      <h3 class="text-center">Ozone & Bishal</h3>
+      <h3 class="text-center">Ozone & Tilak</h3>
       <p class="text-center">
         They shall do it alone. We shall do it together.
       </p>
@@ -90,8 +108,9 @@
         <!-- display products here -->
         <div class="row">
           <!-- to display 3 carts we are using 3 divisions -->
-          <div class="col-md-4 mb-2">
 
+          <!-- lets apply while loop to display the items -->
+          <!-- <div class="col-md-4 mb-2">
             <div class="card">
               <img class="card-img-top" src="./images/1.jpg" alt="Card image cap">
               <div class="card-body">
@@ -100,122 +119,58 @@
                 <a href="#" class="btn btn-primary">Add To Cart</a>
                 <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
               </div>
-            </div>
+            </div> -->
 
-          </div>
-          <div class="col-md-4 mb-2">
-            <div class="card">
-              <img class="card-img-top" src="./images/2.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
+          <?php
 
-          </div>
-          <div class="col-md-4 mb-2">
-            <div class="card">
-              <img class="card-img-top" src="./images/3.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
+          
+          $display_product_query="select * from temp_product";
+          $searched_text="";
+          $display_searched_items="select * from temp_product where product_title like '%$searched_text%'";
 
-          </div>
+          $result=mysqli_query($con,$display_searched_items);
+          if(isset($_POST['search_botton'])){
+            $searched_text=$_POST['search_text'];
+            $display_searched_items="select * from temp_product where product_title like '%$searched_text%'";
+            $result=mysqli_query($con,$display_searched_items);
+          }
+          
+          
+          if($result){
+        while($row=mysqli_fetch_assoc($result)) {
+      $product_id=$row['product_id'];    
+      $product_title=$row['product_title'];
+      $product_price=$row['product_price'];
+      $product_image=$row['product_image'];
+      echo "<div class='col-md-4 mb-2'>
+      <div class='card'>
+        <img class='card-img-top w-full h-25' src='./productimages/$product_image' alt='Card image cap'>
+        <div class='card-body'>
+          <h5 class='card-title'>$product_title</h5>
+          <p class='card-text'>Rs.$product_price</p>
+          <a href='#' class='btn btn-primary'>Add To Cart</a>
+          <a href='#' class='btn btn-warning paddingbetweenbotons'>View More</a>
+        </div>
+      </div>
 
+    </div>";
+        }   
 
-
-          <div class="col-md-4 mb-2">
-            <div class="card">
-              <img class="card-img-top" src="./images/4.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-md-4 mb-2">
-
-            <div class="card">
-              <img class="card-img-top" src="./images/5.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-md-4 mb-2">
-
-            <div class="card">
-              <img class="card-img-top" src="./images/6.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
+          }
+?>
+</div>
 
         </div>
 
       </div>
 
-      <div class="col-md-2 bg-dark p-1 sidenavbar">
-        <!-- display side navigation bar -->
-        <ul class="navbar-nav me-auto text-center">
-          <li class="nav-item bg-warning sidenavbardelivery">
-            <a href="#" class="nav-link text-dark">
-              <h4> Delivery Brands</h4>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-              Brand 1
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-              Brand 2
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-          Brand3
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="testCode.php" class="nav-link text-light">
-              Test Insert Page
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+      
 
 
 
     <!-- last child -->
     <div class="bg-warning p-3 text-center text-light">
-      <p>Ozone & Bishal. Feel Free To Contact Us</p>
+      <p>Ozone & Tilak. Feel Free To Contact Us</p>
     </div>
   </div>
   <?php
