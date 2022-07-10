@@ -29,8 +29,8 @@ include('../includes/connect.php');
             <input type="text" placeholder="Enter your username" name="user_username" maxlength="25" required>
           </div>
           <div class="input-box">
-            <span class="details">Email(Optional)</span>
-            <input type="text" placeholder="Enter your email" name="user_email" maxlength="25" required>
+            <span class="details">Email</span>
+            <input type="email" placeholder="Enter your email" name="user_email" maxlength="25" required>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
@@ -116,8 +116,7 @@ include('../includes/connect.php');
       if ($result) {
         echo "<script>alert('Data added sucessfully')</script>";
       } else {
-        die(mysqli_error($con));
-        echo "<script>alert(mysqli_error($con))</script>";
+        echo "<script>alert(mysqli_error(".'$con'."))</script>";
       }
     } else {
       echo "<script>alert('Passwords Do Not Match')</script>";

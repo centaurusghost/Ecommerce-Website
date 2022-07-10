@@ -17,6 +17,7 @@
     <title>Ecommerce Website learning from a video</title>
 
 <body>
+    <form>
     <div class="container my-4">
         <div class="row">
             <div class="col-8 ">
@@ -30,18 +31,18 @@
                             <p class="">Rs. 89999</p>
                             <div>
                                 <span>Quantity</span>
-                                <button onclick="increment()"><span>+</span></button>
+                                <input type="submit" value="+" name="increase_item_number"></input>
                                 <span id="quantity">1</span>
-                                <button><span>-</span></button>
+                                <input type="submit" value="-" name="decrease_item_number"></input>
                             </div>
 
                         </div>
                         <div class="btn-container d-flex my-4">
                             <div class="buy-now">
-                                <button>Buy Now</button>
+                                <input type="submit" value="Buy Now"></input>
                             </div>
                             <div class="add-to-cart mx-3">
-                                <button>Add to Cart</button>
+                            <input type="submit" value="Add To Cart"></input>
                             </div>
                         </div>
                     </div>
@@ -92,7 +93,7 @@
         </div>
 
     </div>
-
+</form>
 
 </body>
 

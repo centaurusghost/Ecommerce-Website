@@ -1,7 +1,7 @@
 <?php
 include('./includes/connect.php');
+session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Bootstrap CSS -->
@@ -35,7 +35,7 @@ include('./includes/connect.php');
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+              <a class="nav-link active" id="home_button" aria-current="page" href="./index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Products</a>
@@ -71,22 +71,126 @@ include('./includes/connect.php');
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">
-<?php
-$user_logged_in_status=false;
-if(!$user_logged_in_status){
-echo "Weclome fack";
-}
-else{
-echo "welcome fucker";
-}
-?>
+            <?php
+            //session_start();
+            // if(!isset($_POST[''])){
 
+            // }
+            echo "Welcome ".$_SESSION['username'];
+            // if ($_SESSION['user_logged_in_status'] == true) {
+            //   echo "Weclome".$_SESSION['username'];
+            // } else {
+            //   echo "Welcome".$_SESSION['username'];
+            // }
+            ?>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+         
+          <div class="modal-footer d-flex">
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#myModal">Login</button>
+             <form method="POST">
+              <?php
+              if ($_SESSION['user_logged_in_status'] == true) {
+                echo "<input class='btn btn-danger mx-4' name='logout_botton' type='submit' name='logout_botton' value='Logout'></input>";
+               // header("Refresh:0");
+              }
+              if(isset($_POST['logout_botton'])){
+                session_destroy();
+                echo "<script>
+                window.open('http://localhost/Ecommerce%20Website/index.php,'_self');
+              </script>";
+                session_start();
+                $_SESSION['user_logged_in_status'] = false;
+                $_SESSION['username']="Guest";
+              }
+              ?>
+             
+          </form>
+
+          </div>
+
+
+
+
+          <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Login </h4>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <span class="fs-5 fw-bold text-center" aria-hidden="true">&times;</span>
+                  </button>
+
+
+                </div>
+                <form method="POST">
+                  <div class="modal-body mx-3">
+                    <div class="md-form mb-5 d-flex">
+                      <input type="email" maxlength="35" id="defaultForm-email" name="user_email" class="form-control validate" placeholder="Email" required>
+                    </div>
+
+                    <div class="md-form mb-4 d-flex align-items-center justify-content-center">
+
+                      <input type="password" id="defaultForm-pass" maxlength="25" name="user_password" class="form-control validate" placeholder="Password" required>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <input class="btn btn-success fs-5 fw-bold" name="user_login_submit_button" type="submit" value="Login" />
+                  </div>
+              </div>
+              </form>
+            </div>
+
+          </div>
         </li>
+        <!-- check user registration status -->
+        <?php
+        if (isset($_POST['user_login_submit_button'])) {
+          $user_email = $_POST['user_email'];
+          $user_password = $_POST['user_password'];
+          $search_user = "select * from user where user_email='$user_email' and user_password='$user_password'";
+          $result = mysqli_query($con, $search_user);
+          // setting these null
+          $user_temp_password=NULL;
+          $user_temp_email=NULL;
+          if ($result) {
+            // echo '<script>alert("'.$user_email.'");</script>';
+            while ($row = mysqli_fetch_assoc($result)) {
+              $user_id = $row['user_id'];
+              $user_temp_email = $row['user_email'];
+              $user_temp_password = $row['user_password'];
+              $user_username = $row['user_username'];
+              (int)$user_phone_number = $row['user_phone_number'];
+            }
+            // echo '<script>alert("'.$user_phone_number.'");</script>';
+            if ($user_temp_email!=NULL and $user_temp_password=!NULL and $user_email == $user_temp_email and $user_password == $user_temp_password) {
+             // echo '<script>alert("Logged In");</script>';
+              // refresh page to make user logged in
+              $_SESSION['user_logged_in_status'] = true;
+              $_SESSION['username']=$user_username;
+              echo "<script>
+              window.open('http://localhost/Ecommerce%20Website/index.php,'_self');
+
+              </script>";
+
+
+            } else {
+              echo "<script>alert('Email or password Do not match')</script>";
+            //  $_SESSION['user_logged_in_status'] = false;
+            }
+          }
+
+          // echo $user_email;
+          // echo '<script>alert("'.$user_email.'.");</script>';
+
+
+        }
+
+        ?>
         <li class="nav-item">
           <a class="nav-link" href="./supplier/supplier_register.php">become supplier</a>
         </li>
@@ -123,26 +227,26 @@ echo "welcome fucker";
 
           <?php
 
-          
-          $display_product_query="select * from temp_product";
-          $searched_text="";
-          $display_searched_items="select * from temp_product where product_title like '%$searched_text%'";
 
-          $result=mysqli_query($con,$display_searched_items);
-          if(isset($_POST['search_botton'])){
-            $searched_text=$_POST['search_text'];
-            $display_searched_items="select * from temp_product where product_title like '%$searched_text%'";
-            $result=mysqli_query($con,$display_searched_items);
+          $display_product_query = "select * from temp_product";
+          $searched_text = "";
+          $display_searched_items = "select * from temp_product where product_title like '%$searched_text%'";
+
+          $result = mysqli_query($con, $display_searched_items);
+          if (isset($_POST['search_botton'])) {
+            $searched_text = $_POST['search_text'];
+            $display_searched_items = "select * from temp_product where product_title like '%$searched_text%'";
+            $result = mysqli_query($con, $display_searched_items);
           }
-          
-          
-          if($result){
-        while($row=mysqli_fetch_assoc($result)) {
-      $product_id=$row['product_id'];    
-      $product_title=$row['product_title'];
-      $product_price=$row['product_price'];
-      $product_image=$row['product_image'];
-      echo "<div class='col-md-4 mb-2'>
+
+
+          if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+              $product_id = $row['product_id'];
+              $product_title = $row['product_title'];
+              $product_price = $row['product_price'];
+              $product_image = $row['product_image'];
+              echo "<div class='col-md-4 mb-2'>
       <div class='card'>
         <img class='card-img-top w-full h-25' src='./productimages/$product_image' alt='Card image cap'>
         <div class='card-body'>
@@ -154,17 +258,16 @@ echo "welcome fucker";
       </div>
 
     </div>";
-        }   
-
+            }
           }
-?>
-</div>
-
+          ?>
         </div>
 
       </div>
 
-      
+    </div>
+
+
 
 
 
