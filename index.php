@@ -69,8 +69,46 @@
           <a class="nav-link" href="#">Welcome Guest</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+        <li class="">
+
+
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#myModal">Login</button>
+          </div>
+
+
+
+          <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Login In</h4>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <span class="fs-5 fw-bold text-center" aria-hidden="true">&times;</span>
+                  </button>
+
+
+                </div>
+                <form action="" method="POST">
+                  <div class="modal-body mx-3">
+                    <div class="md-form mb-5 d-flex">
+                      <input type="email" pattern="\d*" id="defaultForm-email" class="form-control validate" placeholder="Email" required>
+                    </div>
+
+                    <div class="md-form mb-4 d-flex align-items-center justify-content-center">
+
+                      <input type="password" id="defaultForm-pass" pattern="\d*" class="form-control validate" placeholder="Password">
+                    </div>
+
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-success fs-5 fw-bold" type="submit">Login</button>
+                  </div>
+              </div>
+              </form>
+            </div>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./supplier/supplier_register.php">become supplier</a>
@@ -79,153 +117,16 @@
       </ul>
     </nav>
 
-    <!-- third child -->
-    <div class="bg-light">
-      <h3 class="text-center">Ozone & Bishal</h3>
-      <p class="text-center">
-        They shall do it alone. We shall do it together.
-      </p>
-    </div>
-
-    <!-- fourth child -->
-    <div class="row">
-      <div class="col-md-10">
-        <!-- display products here -->
-        <div class="row">
-          <!-- to display 3 carts we are using 3 divisions -->
-          <div class="col-md-4 mb-2">
-
-            <div class="card">
-              <img class="card-img-top" src="./images/1.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-4 mb-2">
-            <div class="card">
-              <img class="card-img-top" src="./images/2.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-4 mb-2">
-            <div class="card">
-              <img class="card-img-top" src="./images/3.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
 
 
 
-          <div class="col-md-4 mb-2">
-            <div class="card">
-              <img class="card-img-top" src="./images/4.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-md-4 mb-2">
-
-            <div class="card">
-              <img class="card-img-top" src="./images/5.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-md-4 mb-2">
-
-            <div class="card">
-              <img class="card-img-top" src="./images/6.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="col-md-2 bg-dark p-1 sidenavbar">
-        <!-- display side navigation bar -->
-        <ul class="navbar-nav me-auto text-center">
-          <li class="nav-item bg-warning sidenavbardelivery">
-            <a href="#" class="nav-link text-dark">
-              <h4> Delivery Brands</h4>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-              Brand 1
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-              Brand 2
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link text-light">
-              Brand3
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="testCode.php" class="nav-link text-light">
-              Test Insert Page
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
 
 
+    <?php
 
-    <!-- last child -->
-    <div class="bg-warning p-3 text-center text-light">
-      <p>Ozone & Bishal. Feel Free To Contact Us</p>
-    </div>
-  </div>
-  <?php
-
-  ?>
-  <!-- bootstrap js link -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    ?>
+    <!-- bootstrap js link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 </body>
 
