@@ -90,27 +90,26 @@ session_start();
          
           <div class="modal-footer d-flex">
             <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#myModal">Login</button>
-             <form method="POST">
+             <form method="POST" action="loginhandler/logout.php">
               <?php
               if ($_SESSION['user_logged_in_status'] == true) {
                 echo "<input class='btn btn-danger mx-4' name='logout_botton' type='submit' name='logout_botton' value='Logout'></input>";
                // header("Refresh:0");
               }
-              if(isset($_POST['logout_botton'])){
-                session_destroy();
-                echo "<script>
-                window.open('http://localhost/Ecommerce%20Website/index.php,'_self');
-              </script>";
-                session_start();
-                $_SESSION['user_logged_in_status'] = false;
-                $_SESSION['username']="Guest";
-              }
+              // if(isset($_POST['logout_botton'])){
+              //   session_destroy();
+              //   echo "<script>
+              //   window.open('http://localhost/Ecommerce%20Website/index.php,'_self');
+              // </script>";
+              //   session_start();
+              //   $_SESSION['user_logged_in_status'] = false;
+              //   $_SESSION['username']="Guest";
+              // }
               ?>
              
           </form>
 
           </div>
-
 
 
 
@@ -126,7 +125,7 @@ session_start();
 
 
                 </div>
-                <form method="POST">
+                <form method="POST" action="loginhandler/login.php">
                   <div class="modal-body mx-3">
                     <div class="md-form mb-5 d-flex">
                       <input type="email" maxlength="35" id="defaultForm-email" name="user_email" class="form-control validate" placeholder="Email" required>
@@ -148,49 +147,7 @@ session_start();
           </div>
         </li>
         <!-- check user registration status -->
-        <?php
-        if (isset($_POST['user_login_submit_button'])) {
-          $user_email = $_POST['user_email'];
-          $user_password = $_POST['user_password'];
-          $search_user = "select * from user where user_email='$user_email' and user_password='$user_password'";
-          $result = mysqli_query($con, $search_user);
-          // setting these null
-          $user_temp_password=NULL;
-          $user_temp_email=NULL;
-          if ($result) {
-            // echo '<script>alert("'.$user_email.'");</script>';
-            while ($row = mysqli_fetch_assoc($result)) {
-              $user_id = $row['user_id'];
-              $user_temp_email = $row['user_email'];
-              $user_temp_password = $row['user_password'];
-              $user_username = $row['user_username'];
-              (int)$user_phone_number = $row['user_phone_number'];
-            }
-            // echo '<script>alert("'.$user_phone_number.'");</script>';
-            if ($user_temp_email!=NULL and $user_temp_password=!NULL and $user_email == $user_temp_email and $user_password == $user_temp_password) {
-             // echo '<script>alert("Logged In");</script>';
-              // refresh page to make user logged in
-              $_SESSION['user_logged_in_status'] = true;
-              $_SESSION['username']=$user_username;
-              echo "<script>
-              window.open('http://localhost/Ecommerce%20Website/index.php,'_self');
-
-              </script>";
-
-
-            } else {
-              echo "<script>alert('Email or password Do not match')</script>";
-            //  $_SESSION['user_logged_in_status'] = false;
-            }
-          }
-
-          // echo $user_email;
-          // echo '<script>alert("'.$user_email.'.");</script>';
-
-
-        }
-
-        ?>
+       
         <li class="nav-item">
           <a class="nav-link" href="./supplier/supplier_register.php">become supplier</a>
         </li>
@@ -214,20 +171,9 @@ session_start();
           <!-- to display 3 carts we are using 3 divisions -->
 
           <!-- lets apply while loop to display the items -->
-          <!-- <div class="col-md-4 mb-2">
-            <div class="card">
-              <img class="card-img-top" src="./images/1.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">String Description Of The Item</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
-                <a href="#" class="btn btn-warning paddingbetweenbotons">View More</a>
-              </div>
-            </div> -->
+          <!-- <div class="col-md-4 mb-2"-->
 
           <?php
-
-
           $display_product_query = "select * from temp_product";
           $searched_text = "";
           $display_searched_items = "select * from temp_product where product_title like '%$searched_text%'";
@@ -253,7 +199,7 @@ session_start();
           <h5 class='card-title'>$product_title</h5>
           <p class='card-text'>Rs.$product_price</p>
           <a href='#' class='btn btn-primary'>Add To Cart</a>
-          <a href='#' class='btn btn-warning paddingbetweenbotons'>View More</a>
+          <a href='./pages/detail_page.php?product_id=$product_id' class='btn btn-warning paddingbetweenbotons' >View More</a>
         </div>
       </div>
 
@@ -264,6 +210,7 @@ session_start();
         </div>
 
       </div>
+
 
     </div>
 
