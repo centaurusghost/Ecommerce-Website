@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<!-- Designined by CodingLab - youtube.com/codinglabyt -->
 <?php
-// include('../includes/connect.php');
 include('../includes/connect.php');
 ?>
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+
 
 <html lang="en" dir="ltr">
 
@@ -104,7 +104,7 @@ include('../includes/connect.php');
     if (isset($_POST['gender'])) {
       $user_gender = $_POST['gender'];
     }
-    $insert_query = "insert into users(user_fullname, user_username, user_email, user_phone_number, user_password, user_bank_name, user_bank_branch_name, user_bank_account_number, user_gender) VALUES('$user_fullname','$user_username', '$user_email','$user_phone_number','$user_password','$user_bank_name','$user_bank_branch_name','$user_bank_account_number','$user_gender');";
+    $insert_query = "insert into user(user_fullname, user_username, user_email, user_phone_number, user_password, user_bank_name, user_bank_branch_name, user_bank_account_number, user_gender) VALUES('$user_fullname','$user_username', '$user_email','$user_phone_number','$user_password','$user_bank_name','$user_bank_branch_name','$user_bank_account_number','$user_gender');";
     // $user_gender=$_POST['user_gender'];
     //$user_email=$_POST[''];
     //now time to check if password matches or not
