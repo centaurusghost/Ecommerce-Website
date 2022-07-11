@@ -1,37 +1,58 @@
-.MainLogo{
-    width:5%;
-    height:5%;
+body {
+    background-color: green;
 }
+
+
+.MainLogo {
+    width: 5%;
+    height: 5%;
+}
+
 /* .card{
     width: 50%;
     height: 50%;
 
 } */
-.card-img-top{
-    padding:1vh 1vw 1vh 1vw ;
+.card-img-top {
+    padding: 1vh 1vw 1vh 1vw;
     width: 100%;
     height: 50%;
     object-fit: contain;
 }
-.paddingbetweenbotons{
-  float:right;
+
+.paddingbetweenbotons {
+    float: right;
 }
-.btn-primary{
-    width:49%;
-    height:100%;
+
+.btn-primary {
+    width: 49%;
+    height: 100%;
     object-fit: contain;
 }
-.btn-warning{
-    width:49%;
-    height:100%;
+
+.btn-warning {
+    width: 49%;
+    height: 100%;
     object-fit: contain;
 }
- .sidenavbar{
+
+.sidenavbar {
     border-radius: 5px;
 }
-.sidenavbardelivery{
+
+.sidenavbardelivery {
     border-radius: 5px;
 }
 
+li {
+    list-style: none;
+}
 
-
+/* for the dropdown menu */
+.submenu2 {
+    position: absolute;
+    background-color: #2c3e50;
+    width: 140px;
+    left: 0;
+    display: block;
+}
