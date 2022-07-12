@@ -1,6 +1,11 @@
 <?php
 include('./includes/connect.php');
-session_start();
+//session_start();
+$_SESSION['user_logged_in_status']=false;
+$_SESSION['username']="Guest";
+$_SESSION['user_id']=0;
+$_SESSION['items_in_cart']=0;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +26,9 @@ session_start();
   <title>Ecommerce Website learning from a video</title>
 
 <body>
+  <?php
+//echo $_SESSION['user_id'];
+  ?>
   <!-- navigation bar -->
   <div class="container-fluid p-0">
     <!-- first child -->
@@ -50,7 +58,20 @@ session_start();
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup>1</sup></a>
+              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup>
+              <?php 
+              $tempvar=$_SESSION['user_id'];
+              echo "<script>
+               if($tempvar==0){document.write(0);}
+               else{
+                document.write(12);
+               // document.write();
+               }
+              </script>";
+               ?>
+                
+            
+            </sup></a>
             </li>
 
             <li class="nav-item">
@@ -72,16 +93,9 @@ session_start();
         <li class="nav-item">
           <a class="nav-link" href="#">
             <?php
-            //session_start();
-            // if(!isset($_POST[''])){
-
-            // }
-            echo "Welcome ".$_SESSION['username'];
-            // if ($_SESSION['user_logged_in_status'] == true) {
-            //   echo "Weclome".$_SESSION['username'];
-            // } else {
-            //   echo "Welcome".$_SESSION['username'];
-            // }
+            session_start();
+            echo "Welcome ". $_SESSION['username'];
+            
             ?>
           </a>
         </li>
@@ -147,10 +161,29 @@ session_start();
           </div>
         </li>
         <!-- check user registration status -->
-       
-        <li class="nav-item">
-          <a class="nav-link" href="./supplier/supplier_register.php">become supplier</a>
-        </li>
+       <?php
+//  <!-- use this later on very imp -->
+if($_SESSION['user_logged_in_status'] == true){
+  $user_temp_id=$_SESSION['user_id'];
+  echo " <li class='nav-item'>
+  <a href='./supplier/supplier_registration_page.php?user_temp_id=$user_temp_id' class='btn nav-link'>Become A Supplier?</a>
+</li>";
+
+// echo "<div class='col-md-4 mb-2'>
+// <div class='card'>
+//   <img class='card-img-top w-full h-25' src='./productimages/$product_image' alt='Card image cap'>
+//   <div class='card-body'>
+//     <h5 class='card-title'>$product_title</h5>
+//     <p class='card-text'>Rs.$product_price</p>
+//     <a href='#' class='btn btn-primary'>Add To Cart</a>
+//     <a href='./pages/detail_page.php?product_id=$product_id' class='btn btn-warning paddingbetweenbotons' >View More</a>
+//   </div>
+// </div>
+
+// </div>";
+}
+       ?>
+        
 
       </ul>
     </nav>
@@ -193,21 +226,24 @@ session_start();
               $product_price = $row['product_price'];
               $product_image = $row['product_image'];
               echo "<div class='col-md-4 mb-2'>
+              <form method='POST' action=''>
       <div class='card'>
         <img class='card-img-top w-full h-25' src='./productimages/$product_image' alt='Card image cap'>
         <div class='card-body'>
           <h5 class='card-title'>$product_title</h5>
           <p class='card-text'>Rs.$product_price</p>
-          <a href='#' class='btn btn-primary'>Add To Cart</a>
+          <a href='#' class='btn btn-primary' onclick=''>Add To Cart</a>
           <a href='./pages/detail_page.php?product_id=$product_id' class='btn btn-warning paddingbetweenbotons' >View More</a>
         </div>
       </div>
-
+</form>
     </div>";
             }
           }
+         
           ?>
         </div>
+        
 
       </div>
 

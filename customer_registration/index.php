@@ -131,7 +131,7 @@ include('../includes/connect.php');
       if (isset($_POST['gender'])) {
         $user_gender = $_POST['gender'];
         echo "The botton is working";
-        echo $user_gender;
+        //echo $user_gender;
       }
     }
     ?>

@@ -91,6 +91,10 @@ $product_image=$row['product_image'];
                         </div>
 
                     </div>
+                    <br>
+                    <div class=''>
+                    <span>Remaining Quantity:50</span>
+                    </div>
                     <div class='btn-container d-flex my-4'>
                         <div class='buy-now'>
                             <input type='submit' value='Buy Now'></input>
@@ -98,6 +102,7 @@ $product_image=$row['product_image'];
                         <div class='add-to-cart mx-3'>
                         <input type='submit' value='Add To Cart'></input>
                         </div>
+                       
                     </div>
                 </div>
             </div>
